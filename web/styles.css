@@ -1,0 +1,11 @@
+.welcome-container 
+{
+	padding-top: 10vh;
+	margin:auto;
+	width: 70%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+
+}
