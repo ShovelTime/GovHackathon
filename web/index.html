@@ -5,13 +5,66 @@
 
 	</head>
 	<body>
+		<script>
+			const weights = {
+				SEI : 0.7,
+				Income : 0.6,
+				HELPS: 0.7,
+				Super: 0.4,
+    				English: 0.2,
+    				Irregular: 0.8,
+
+			};
+			function ComputeSEA()
+			{
+				const postalMap = new Map();
+				postalMap.set("6280", 5);
+				postalMap.set("3920", 10);
+				postalMap.set("0872", 1);
+				const parameters = {
+					SEI : postalMap.get(document.getElementById("postal").value),
+					Income : document.getElementById("income").value,
+					HELPS : document.getElementById("help").checked.toString(),
+					Super : document.getElementById("super").value,
+					English : document.getElementById("english").checked.toString(),
+					Irregular : document.getElementById("missed").checked.toString(),
+				};
+				const json_msg = {
+					params_dict : parameters,
+					weight_dict : weights
+				};
+				console.log(json_msg);
+				var conn = new XMLHttpRequest();
+				conn.open( "POST", "https://127.0.0.1:5000/compute", true);
+
+				conn.send(JSON.stringify(json_msg));
+			}
+		</script>
 	
 		<div class="welcome-container">
 			<div class="welcome-item"> <h1>Welcome Jared</h1></div>
 			<img class="welcome-item" src="profile.png"/>
 		</div>
 
-		<div class="progress-system">
+		<div class="score-container">
+			<form action="javascript:ComputeSEA()">
+
+				<p>Postal Code: <input type="text" name="postal" id="postal" value=""></p>
+				<p>Income: <input name="income" type="number" id="income" value="0"></p>
+				<p>Super: <input type="number" name="super" id="super" value="0"> <a href="super.html">What is this?</a></p>
+				<p>HELP?: <input type="checkbox" name="HELP" id="help" value="false"></p>
+				<p>Missed tax payment(in the last year): <input type="checkbox" name="missed" id="missed" value="false"></p>
+				<p>Native English?: <input type="checkbox" name="English" id="english" value="false">
+
+				<br>
+				<input name="submit" type="submit">Calculate</input>	
+				
+			</form>
+
+
+
+
+
 
 
 	</body>
