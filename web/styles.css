@@ -6,7 +6,7 @@ html
 .welcome-container 
 {
 	background-color: #FFFFFF;
-	
+	border-radius: 100px;
 	margin:auto;
 	margin-top: 10vh;
 	width: 70%;
@@ -16,6 +16,52 @@ html
 	justify-content: space-between;
 
 }
+
+.score-container
+{
+	border-radius: 100px;
+	background-color: #FFFFFF;
+	margin:auto;
+	margin-top: 3vh;
+	width: 70%;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	flex: 1 1 auto;
+	padding-bottom: 20px
+
+
+}
+
+.result-container 
+{
+	background-color: #FFFFFF;
+	border-radius: 100px;
+	margin:auto;
+	margin-top: 10vh;
+	width: 70%;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space_around;
+
+}
+.result-container-hidden
+{
+	display:none
+}
+
+.result-field
+{
+	align-self:center
+}
+
+.score-form-item
+{
+	margin-left: 10%
+}
+
 .welcome-item
 {
 	align-self:center;

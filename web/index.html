@@ -35,12 +35,37 @@
 				};
 				console.log(json_msg);
 				var conn = new XMLHttpRequest();
-				conn.open( "POST", "http://127.0.0.1:5000/compute", true);
+				conn.open( "POST", "http://127.0.0.1:5000/compute", false);
 
 				conn.setRequestHeader("Content-Type", "application/json");
 
 				conn.send(JSON.stringify(json_msg));
+				console.log(conn.responseText);
+				const result = JSON.parse(conn.responseText)["result"];
+				var result_elem = document.getElementById("result-container");
+				var result_score = document.getElementById("result-score");
+				var result_comment = document.getElementById("result-comment");
+				result_score.innerHTML = "Your SEA score is";
+				if(result > 80)
+				{
+					result_score.innerHTML += "<div style=\"color:green\">" + result + "<div/>";
+					result_comment.innerHTML += "Nothing much to be commented on here, keep it up!";
+				}
+				else if(result > 50)
+				{
+					result_score.innerHTML += "<div style=\"color:orange\">" + result + "<div/>";
+					result_comment.innerHTML += "Certain areas may need your intention, make sure you :INSERT COMMENTS HERE";
+				}
+				else
+				{	
+					result_score.innerHTML += "<div style=\"color:red\">" + result + "<div/>";
+					result_comment.innerHTML += "You are at risk, follow some of the advice below, [INSERT ADVICE HERE]";
+				}
+
+				result_elem.className = "result-container" 
+	
 			}
+		
 		</script>
 	
 		<div class="welcome-container">
@@ -48,20 +73,27 @@
 			<img class="welcome-item" src="profile.png"/>
 		</div>
 
-		<div class="score-container">
-			<form action="javascript:ComputeSEA()">
+		<form action="javascript:ComputeSEA()">
+			<div class="score-container">
 
-				<p>Postal Code: <input type="text" name="postal" id="postal" value=""></p>
-				<p>Income: <input name="income" type="number" id="income" value="0"></p>
-				<p>Super: <input type="number" name="super" id="super" value="0"> <a href="super.html">What is this?</a></p>
-				<p>HELP?: <input type="checkbox" name="HELP" id="help" value="false"></p>
-				<p>Missed tax payment(in the last year): <input type="checkbox" name="missed" id="missed" value="false"></p>
-				<p>Native English?: <input type="checkbox" name="English" id="english" value="false">
+
+				<div class="score-form-item"><p>Postal Code: <input type="text" name="postal" id="postal" value=""></p></div>
+				<div class="score-form-item"><p>Income: <input name="income" type="number" id="income" value="0"></p></div>
+				<div class="score-form-item"><p>Super: <input type="number" name="super" id="super" value="0"> <a href="super.html">What is this?</a></p></div>
+				<div class="score-form-item"><p>HELP?: <input type="checkbox" name="HELP" id="help" value="false"></p></div>
+				<div class="score-form-item"><p>Missed tax payment(in the last year): <input type="checkbox" name="missed" id="missed" value="false"></p></div>
+	 								<div class="score-form-item"><p>Native English?: <input type="checkbox" name="English" id="english" value="false"></div>
 
 				<br>
-				<input name="submit" type="submit">Calculate</input>	
-				
-			</form>
+				<div class="score-form-item"><input name="submit" type="submit" value="Calculate"></input></div>	
+			</div>			
+		</form>
+		<div id="result-container" class="result-container-hidden">
+			<p id="result-score" class="result-field"></p>
+			<p id="result-comment" class="result-field"></p>
+		</div>
+		
+
 
 
 
