@@ -46,12 +46,12 @@
 				var result_score = document.getElementById("result-score");
 				var result_comment = document.getElementById("result-comment");
 				result_score.innerHTML = "Your SEA score is";
-				if(result > 80)
+				if(result < 20)
 				{
 					result_score.innerHTML += "<div style=\"color:green\">" + result + "<div/>";
 					result_comment.innerHTML += "Nothing much to be commented on here, keep it up!";
 				}
-				else if(result > 50)
+				else if(result < 50)
 				{
 					result_score.innerHTML += "<div style=\"color:orange\">" + result + "<div/>";
 					result_comment.innerHTML += "Certain areas may need your intention, make sure you :INSERT COMMENTS HERE";

@@ -44,7 +44,7 @@ html
 	display: flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
-	justify-content: space_around;
+	justify-content: space-around;
 
 }
 .result-container-hidden
